@@ -63,30 +63,67 @@ while chance >= 0:
 import random
 import time
 
+'''
 down = 1
 up = 100
-count = 0
+'''
+
+down = int(input('請輸入下限  '))
+up = int(input('請輸入上限  '))
+count = 1
 
 r = random.randint(down, up)
 
-print('系統隨機產生了一個', down, '至', up, '的數字，猜中有獎')
+guess_down = down
+guess_up = up
+
+
+print('\n系統隨機產生了一個', down, '至', up, '的數字，估中有獎\n')
+
 
 while True:
+	time.sleep(1)
 	
-	guess = int(input('請輸入你猜的數字。  '))
-
-	count = count + 1
-	print('這是第 ', count, ' 次猜喔！\n\n')
+	print('\n依家範圍係 ', guess_down, '至', guess_up, '\n')
 	time.sleep(0.5)
 
-	if guess == r:
-		print('猜對了！！ 利害！！')
-		break
+	if guess_down == guess_up:
+		print('無扮野喇，得返一個冧巴，冧巴溫啊你，實中啊\n')
+	elif guess_up - guess_down < 15:
+		print('得幾個數字，中硬啊你\n')
 
-	elif guess >= r:
-		print('太大了，再猜\n')
-	elif guess <= r:
-		print('太細了，再猜\n')
+	time.sleep(0.5)
+	print('係第 ', count, ' 次估！\n\n')
+	time.sleep(0.5)
+
+	guess = int(input('請輸入你估的數字。  '))
+	print('\n\n')
+	time.sleep(0.5)
+
+	'''if guess == guess_down or guess_up:
+		print('玩野？這個數字猜過了\n ')'''
+	if guess < down:
+		print('估咁細！落地獄啊你！  ', guess_down, '至', guess_up, ' 啊豬頭，再估過\n ')
+	elif guess > up:
+		print('估到出宇宙丫笨！ ', guess_down, '至', guess_up, ' 啊豬頭，再估過\n ')
+
+	elif guess < guess_down:
+		print('無腦架？仲估細啲？再估過\n ')
+	elif guess > guess_up:
+		print('無腦架？仲估大啲？再估過\n ')
+	
+
+	elif guess == r:
+		print('估中了！！ 利害！！')
+		break
+	elif guess > r:
+		print('太大了，再估\n')
+		count = count + 1
+		guess_up = guess - 1
+	elif guess < r:
+		print('太細了，再估\n')
+		count = count + 1
+		guess_down = guess + 1
 	else:
 		print('輸入數字啦')
 
@@ -98,6 +135,6 @@ python3 guess_no.py
 
 #更新版本用
 git add guess_no.py
-git commit -m "basic version"
+git commit -m "加入猜測次數"
 git push origin main
 '''
