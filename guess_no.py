@@ -61,9 +61,11 @@ while chance >= 0:
 '''
 
 import random
+import time
 
 down = 1
 up = 100
+count = 0
 
 r = random.randint(down, up)
 
@@ -73,14 +75,18 @@ while True:
 	
 	guess = int(input('請輸入你猜的數字。  '))
 
+	count = count + 1
+	print('這是第 ', count, ' 次猜喔！\n\n')
+	time.sleep(0.5)
+
 	if guess == r:
 		print('猜對了！！ 利害！！')
 		break
 
 	elif guess >= r:
-		print('太大了，再猜', r)
+		print('太大了，再猜\n')
 	elif guess <= r:
-		print('太細了，再猜', r)
+		print('太細了，再猜\n')
 	else:
 		print('輸入數字啦')
 
@@ -92,9 +98,6 @@ python3 guess_no.py
 
 #更新版本用
 git add guess_no.py
-git commit -m "4"
+git commit -m "basic version"
 git push origin main
 '''
-
-
-
