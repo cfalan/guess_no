@@ -88,7 +88,7 @@ while True:
 	time.sleep(0.5)
 
 	if guess_down == guess_up:
-		print('無扮野喇，得返一個冧巴，冧巴溫啊你，實中啊\n')
+		print('無扮野喇，得返一個冧巴，冧巴溫啊你，快啲中左佢算啦\n')
 	elif guess_up - guess_down < 15:
 		print('得幾個數字，中硬啊你\n')
 
@@ -135,6 +135,6 @@ python3 guess_no.py
 
 #更新版本用
 git add guess_no.py
-git commit -m "加入猜測次數"
+git commit -m "加多左顯示方式"
 git push origin main
 '''
